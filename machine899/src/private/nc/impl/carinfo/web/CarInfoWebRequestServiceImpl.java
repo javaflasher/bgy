@@ -44,6 +44,7 @@ public class CarInfoWebRequestServiceImpl implements ICarInfoWebRequestService {
 		}catch(BusinessException e){
 			Logger.error(e);
 		}
+		//String ss = new String ("测试是否会同步");
 		
 		JSONObject returnJson = new JSONObject();
 		
