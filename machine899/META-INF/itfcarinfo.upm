@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gbk"?>
+<module name="erm_carinfo">
+	<public>
+		    <!-- 接口 -->
+		    <component priority="0" singleton="true" remote="true" tx="CMT" supportAlias="true">
+	      <interface>nc.itf.erm.ICarinfoMaintain</interface>
+	      <implementation>nc.impl.erm.CarinfoMaintainImpl</implementation>
+	    </component>
+	    <component priority="0" singleton="true" remote="true" tx="CMT" supportAlias="true">
+	      <interface>nc.itf.erm.ICarInfoSyncService</interface>
+	      <implementation>nc.impl.erm.CarInfoSyncServiceImpl</implementation>
+	    </component>
+	    <component priority="0" singleton="true" remote="true" tx="CMT" supportAlias="true">
+	    	<interface>nc.itf.carinfo.web.ICarInfoWebRequestService</interface>	
+	    	<implementation>nc.impl.carinfo.web.CarInfoWebRequestServiceImpl</implementation>
+	    </component>
+	</public>
+</module>
