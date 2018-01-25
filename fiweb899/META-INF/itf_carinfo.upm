@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module name="erm_carinfo">
+	<public>
+		<component priority="0" singleton="true" remote="true" tx="CMT" supportAlias="true" >
+			<interface>nc.itf.carinfo.web.ICarInfoWebRequestService</interface>
+			<implements>nc.impl.carinfo.web.CarInfoWebRequestServiceImpl</implements>
+		</component>
+	</public>
+	<private>
+	</private>
+</module>
