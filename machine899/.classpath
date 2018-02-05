@@ -5,7 +5,6 @@
 	<classpathentry kind="src" output="out/client" path="src/client"/>
 	<classpathentry kind="src" output="out/resources" path="resources"/>
 	<classpathentry kind="src" output="out/test" path="src/test"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/fiweb899"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="nc.uap.mde.library.container/Ant_Library"/>
 	<classpathentry kind="con" path="nc.uap.mde.library.container/Product_Common_Library"/>

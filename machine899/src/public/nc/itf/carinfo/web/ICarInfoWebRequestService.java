@@ -36,7 +36,21 @@ public interface ICarInfoWebRequestService {
 	 */
 	public String update(RequestParam request) throws Exception;
 	
-
+	/**车辆信息维护浏览信息
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 * @author 钟泽辉
+	 */
+	public String view(RequestParam request) throws Exception;
+	
+	/**车辆信息维护编辑
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 * 
+	 */
+	public String edit(RequestParam request) throws Exception;
 	
 
 }
