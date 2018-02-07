@@ -35,8 +35,8 @@ public class AceCarinfoApproveBP {
 		AggCarInfoVO[] returnVos = update.update(clientBills, originBills);
 		
 		ICarInfoSyncService syncService = NCLocator.getInstance().lookup(ICarInfoSyncService.class);
-		for(int x=0;x<returnVos.length;x++){	
-			if(returnVos[x].getParentVO().getApprovestatus()== CarInforConstants.approval_sptg){	/* 终审通过*/	
+		/*for(int x=0;x<returnVos.length;x++){	
+			if(returnVos[x].getParentVO().getApprovestatus()== CarInforConstants.approval_sptg){	 终审通过	
 				try {
 					String pk_car = syncService.syncCarlnfo(returnVos[x].getParentVO());
 					
@@ -53,10 +53,11 @@ public class AceCarinfoApproveBP {
 					}
 					
 				} catch (BusinessException e) {
+					throw new BusinessException("同步出错！");
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 		
 		return returnVos;
 	}

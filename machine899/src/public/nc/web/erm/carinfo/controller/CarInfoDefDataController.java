@@ -46,12 +46,15 @@ public class CarInfoDefDataController {
 			if ("add".equals(uistate)) {
 				FIDataTableUtil.setHeadValue(mainOrgTable, "pk_org", "0001H2100000000022LJ");//0001H210000000263BBV 0001H210000000000IGL
 				FIDataTableUtil.setHeadValue(hTable, "billmaker", pk_user);
+				FIDataTableUtil.setHeadValue(hTable, "creator", pk_user);
 				FIDataTableUtil.setHeadValue(hTable, "pk_org", "0001H2100000000022LJ");
 				FIDataTableUtil.setHeadValue(hTable, "pk_group", pk_group);
 				FIDataTableUtil.setHeadValue(hTable, "maketime", date);
 				FIDataTableUtil.setHeadValue(hTable, "approvestatus", "-1");
+				FIDataTableUtil.setHeadValue(hTable, "transtype", "CARI-Cxx-001");
 				FIDataTableUtil.setHeadValue(hTable, "billstatus", "1");
 				FIDataTableUtil.setHeadValue(hTable, "billdate", date);
+				//不知道为什么，打开表体第一行默认编辑，而且覆盖了第一行，所以直接设值
 				FIDataTableUtil.setHeadValue(bTable, "rowno", 10);
 				FIDataTableUtil.setHeadValue(bTable, "accmonth", 1);
 				

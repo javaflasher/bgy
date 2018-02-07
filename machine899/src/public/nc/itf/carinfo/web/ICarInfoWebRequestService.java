@@ -52,5 +52,13 @@ public interface ICarInfoWebRequestService {
 	 */
 	public String edit(RequestParam request) throws Exception;
 	
+	/**车辆信息维护编辑
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 * 
+	 */
+	public String delete(RequestParam request) throws Exception;
+	
 
 }

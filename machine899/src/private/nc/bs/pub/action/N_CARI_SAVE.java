@@ -37,7 +37,11 @@ public class N_CARI_SAVE extends AbstractPfAction<AggCarInfoVO> {
 		nc.itf.erm.ICarinfoMaintain operator = NCLocator.getInstance().lookup(
 				nc.itf.erm.ICarinfoMaintain.class);
 		AggCarInfoVO[] bills = null;
+		for(int x=0;x<clientFullVOs.length;x++){
+			clientFullVOs[x].getParentVO().setAttributeValue("billstatus", 2);//提交时  单据状态为审批中
+		}
 		try {
+			
 			bills = operator.save(clientFullVOs, originBills);
 		} catch (BusinessException e) {
 			ExceptionUtils.wrappBusinessException(e.getMessage());

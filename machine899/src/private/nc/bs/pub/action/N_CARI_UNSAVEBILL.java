@@ -35,6 +35,9 @@ public class N_CARI_UNSAVEBILL extends AbstractPfAction<AggCarInfoVO> {
 			AggCarInfoVO[] clientFullVOs, AggCarInfoVO[] originBills) {
 		nc.itf.erm.ICarinfoMaintain operator = NCLocator.getInstance().lookup(
 				nc.itf.erm.ICarinfoMaintain.class);
+		for(int x=0;x<clientFullVOs.length;x++){
+			clientFullVOs[x].getParentVO().setAttributeValue("billstatus", 1);//收回时  单据状态为未审批
+		}
 		AggCarInfoVO[] bills = null;
 		try {
 			bills = operator.unsave(clientFullVOs, originBills);

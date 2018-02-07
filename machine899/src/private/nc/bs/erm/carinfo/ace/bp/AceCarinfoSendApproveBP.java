@@ -24,7 +24,6 @@ public class AceCarinfoSendApproveBP {
 		for (AggCarInfoVO clientFullVO : clientBills) {
 			clientFullVO.getParentVO().setAttributeValue("approvestatus",
 					BillStatusEnum.COMMIT.value());
-			 clientFullVO.getParentVO().setAttributeValue("billstatus", 2);//提交时  单据为保存态保存
 			clientFullVO.getParentVO().setStatus(VOStatus.UPDATED);
 		}
 		// 数据持久化

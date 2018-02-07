@@ -35,6 +35,8 @@ public class N_CARI_UNAPPROVE extends AbstractPfAction<AggCarInfoVO> {
 			AggCarInfoVO[] clientFullVOs, AggCarInfoVO[] originBills) {
 		for (int i = 0; clientFullVOs != null && i < clientFullVOs.length; i++) {
 			clientFullVOs[i].getParentVO().setStatus(VOStatus.UPDATED);
+			clientFullVOs[i].getParentVO().setAttributeValue("billstatus", 2);//取消审批时  单据状态为审批中
+		
 		}
 		AggCarInfoVO[] bills = null;
 		try {

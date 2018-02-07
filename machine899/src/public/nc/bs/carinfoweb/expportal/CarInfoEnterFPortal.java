@@ -92,33 +92,32 @@ public class CarInfoEnterFPortal  extends BasePortal{
 	public PortalQueryFieldName getPortalQueryFieldName() {
 		PortalQueryFieldName queryField = new PortalQueryFieldName();
 		queryField.setCode("CARI");
-		queryField.setApprover(SupplierEnterPFVO.APPROVER);
-		queryField.setBilldate(SupplierEnterPFVO.DMAKEDATE);
-		queryField.setBillMaker(SupplierEnterPFVO.BILLMAKER);
-		queryField.setBillno(SupplierEnterPFVO.VBILLCODE);
-		queryField.setDeptId(SupplierEnterPFVO.VDEF10);
-		queryField.setDjdl(SupplierEnterPFVO.CBILLTYPECODE);
-		queryField.setDjlxbm(SupplierEnterPFVO.VDEF10);
-		queryField.setDjzt(SupplierEnterPFVO.FSTATUSFLAG);
-		queryField.setJylxbm(SupplierEnterPFVO.VDEF10);
-		queryField.setJylxid(SupplierEnterPFVO.VDEF10);
+		queryField.setApprover("approver");
+		queryField.setBilldate("billdate");
+		queryField.setBillMaker("billmaker");
+		queryField.setBillno("billno");
+		queryField.setDeptId("transtype");
+		queryField.setDjdl("transtype");
+		queryField.setDjlxbm("transtype");
+		queryField.setDjzt("billstatus");
+		queryField.setJylxbm("transtype");
+		queryField.setJylxid("transtypepk");
 		queryField.setmTableName("er_carinfo");
-		queryField.setPayFlag("");
-		queryField.setPk_group(SupplierEnterPFVO.PK_GROUP);
+		queryField.setPk_group("pk_group");
 		queryField.setPk_id("pk_carinfo");
-		queryField.setPk_org(SupplierEnterPFVO.PK_ORG);
+		queryField.setPk_org("pk_org");
 		queryField.setPk_project("");
-		queryField.setSpsj(SupplierEnterPFVO.TAUDITTIME);
-		queryField.setSpzt(SupplierEnterPFVO.APPROVESTATUS);
-		queryField.setSxzt(SupplierEnterPFVO.FSTATUSFLAG);
+		queryField.setSpsj("approvedate");
+		queryField.setSpzt("approvestatus");
+		queryField.setSxzt("billstatus");
 		queryField.setSzxmid("");
-		queryField.setTotal("");
+		queryField.setTotal("annuallimit");
 		queryField.setCurrtype("none");
 		
 		//queryField.setpsndocSql(" (yer_yerexpbill." + SupplierEnterPFVO.BILLMAKER + "='%cuserid%') ");
 		//queryField.setSrcSys("case  when  yer_yerexpbill.def30 ='~' or yer_yerexpbill.def30 is null then convert(varchar,src_syscode) else yer_yerexpbill.def30 end");
-		queryField.setIsHasCompletePortlet("yer_yerexpbill."+ SupplierEnterPFVO.FSTATUSFLAG + " in (3,4) and vsource = 3 ");
-		queryField.setNotHasCompletePortlet("yer_yerexpbill."+ SupplierEnterPFVO.FSTATUSFLAG + " not in (3,4) and vsource = 3 ");
+		queryField.setIsHasCompletePortlet("yer_yerexpbill.approvestatus in (1)  ");
+		queryField.setNotHasCompletePortlet("yer_yerexpbill.approvestatus not in (1)  ");
 		return queryField;
 		
 	}

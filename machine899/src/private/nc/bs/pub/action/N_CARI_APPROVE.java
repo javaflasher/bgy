@@ -37,6 +37,12 @@ public class N_CARI_APPROVE extends AbstractPfAction<AggCarInfoVO> {
 		AggCarInfoVO[] bills = null;
 		nc.itf.erm.ICarinfoMaintain operator = NCLocator.getInstance().lookup(
 				nc.itf.erm.ICarinfoMaintain.class);
+		//驳回时()更新单据状态；
+		if(clientFullVOs[0].getParentVO().getApprovestatus()==CarInforConstants.approval_free && 
+				originBills[0].getParentVO().getBillstatus()==CarInforConstants.billstatus_spz){
+			
+			clientFullVOs[0].getParentVO().setBillstatus(CarInforConstants.billstatus_wsp);
+		}
 		try {
 			bills = operator.approve(clientFullVOs, originBills);
 		} catch (BusinessException e) {

@@ -13,6 +13,7 @@ import nc.bs.framework.common.NCLocator;
 import nc.bs.logging.Logger;
 import nc.itf.carinfo.web.ICarInfoWebRequestService;
 import nc.ssc.fiweb.pub.RequestParam;
+import nc.vo.pub.BusinessException;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -35,25 +36,23 @@ public class CarInfoController extends BaseController {
 		ICarInfoWebRequestService  service = NCLocator.getInstance().lookup(ICarInfoWebRequestService.class);
 		String jsonBill = null;
 		try {
-			jsonBill = service.view(new RequestParam(request));
-			if(jsonBill!=null){
-				response.setContentType("text/html");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(jsonBill);
-			}else{
-				JSONObject jsonObj = new JSONObject();
-				jsonObj.put("success", "false");
-				jsonObj.put("message", "查不到单据");
-				response.getWriter().write(jsonObj.toString());
-			}
+			jsonBill = service.view(new RequestParam(request));		
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonBill);
 		} catch (Exception e) {
 			Logger.error(e.getMessage(), e);
 			JSONObject jsonObj = new JSONObject();
 			jsonObj.put("success", "false");
 			jsonObj.put("message", e.getMessage());
 			response.getWriter().write(jsonObj.toString());
+		}finally {
+			try {
+				response.flushBuffer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		String test = "breakpoint";
 	} 	
 	
 	
@@ -89,8 +88,6 @@ public class CarInfoController extends BaseController {
 				e.printStackTrace();
 			}
 		}
-		String test = "breakpoint";
-		Logger.debug(test);
 	}
 
 	
@@ -110,18 +107,39 @@ public class CarInfoController extends BaseController {
 			jsonObj.put("success", "false");
 			jsonObj.put("message", e.getMessage());
 			response.getWriter().write(jsonObj.toString());
+		} finally {
+			try {
+				response.flushBuffer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		String test = "breakpoint";
 	}
 	
 	@SuppressWarnings("restriction")
-	@RequestMapping(value = "/recall", method = RequestMethod.GET)
+	@RequestMapping(value = "/recall", method = RequestMethod.POST)
 	@ResponseBody
-	public void recallBill(HttpServletRequest request, HttpServletResponse response){
+	public void recallBill(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ICarInfoWebRequestService  service = NCLocator.getInstance().lookup(ICarInfoWebRequestService.class);
-		
-		String test = "breakpoint";
-		
+		String jsonString  = null;
+		try {
+			jsonString = service.recall(new RequestParam(request));
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonString);
+		} catch (BusinessException e) {
+			Logger.error(e.getMessage(), e);
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("success", "false");
+			jsonObj.put("message", e.getMessage());
+			response.getWriter().write(jsonObj.toString());
+		}finally {
+			try {
+				response.flushBuffer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@SuppressWarnings("restriction")
@@ -129,9 +147,52 @@ public class CarInfoController extends BaseController {
 	@ResponseBody
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ICarInfoWebRequestService  service = NCLocator.getInstance().lookup(ICarInfoWebRequestService.class);
-		String jsonString  = service.edit(new RequestParam(request));
+	
+		try {
+			String jsonString = service.edit(new RequestParam(request));
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonString);
+		} catch (Exception e) {
+			Logger.error(e.getMessage(), e);
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("success", "false");
+			jsonObj.put("message", e.getMessage());
+			response.getWriter().write(jsonObj.toString());			
+		}finally {
+			try {
+				response.flushBuffer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
-		String test = "breakpoint";
+	}
+	
+	@SuppressWarnings("restriction")
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@ResponseBody
+	public void delt(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ICarInfoWebRequestService  service = NCLocator.getInstance().lookup(ICarInfoWebRequestService.class);
+	
+		try {
+			String jsonString = service.delete(new RequestParam(request));
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonString);
+		} catch (Exception e) {
+			Logger.error(e.getMessage(), e);
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("success", "false");
+			jsonObj.put("message", e.getMessage());
+			response.getWriter().write(jsonObj.toString());			
+		}finally {
+			try {
+				response.flushBuffer();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	
